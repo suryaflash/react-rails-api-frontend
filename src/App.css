@@ -33,6 +33,12 @@
   float:left;
 }
 
+.formGroup
+{
+  float:right;
+  width : 60%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
