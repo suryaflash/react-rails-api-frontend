@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './../App.css';
 import { Alert, Button, Table } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+var request = require('superagent');
+var JWT = require('superagent-jwt');
 
 class Histori extends Component {
     constructor() {
@@ -28,20 +29,21 @@ class Histori extends Component {
     getHistory = () => {
 
         let data = { id: this.props.match.params.id }
+        var t = this;
+        var jwt = JWT({
+            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+        });
 
-        let token = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: `http://localhost:4000/articles/history`,
-            type: "POST",
-            data: data,
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-            context: this,
-            success: function (result) {
+        request
+            .post('http://localhost:4000/articles/history')
+            .field('id', data.id)
+            .use(jwt)
+            .end(function (err, result) {
                 console.log(result)
-                console.log("history_array:", result);
-                this.setState({ history: result })
-            }
-        })
+                console.log("history_array:", result.body);
+                t.setState({ history: result.body })
+            });
     }
 
     logout = () => {

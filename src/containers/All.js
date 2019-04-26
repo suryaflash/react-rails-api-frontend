@@ -3,7 +3,10 @@ import './../App.css';
 import { Alert, Table, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
-import $ from 'jquery';
+import * as actionCreator from '../actions/actions.js';
+
+var request = require('superagent');
+var JWT = require('superagent-jwt');
 
 class All extends Component {
     constructor() {
@@ -25,33 +28,24 @@ class All extends Component {
     }
 
     getAllArticle = () => {
-        let toke = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: "http://localhost:4000/articles",
-            type: "GET",
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', toke) },
-            context: this,
-            success: function (result) {
-                this.setState({ contents: result })
-                console.log("sss", result);
-            }
-        })
+       this.props.onGetAllArticle();
+        var t = this;
+        var jwt = JWT({
+            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+        });
+
+        request
+            .get('http://localhost:4000/articles')
+            .use(jwt)
+            .end(function (err, res) { 
+                t.setState({ contents: res.body })
+            });
     }
 
 
     deleteHandler = (index) => {
-        let data = { id: index }
-        let token1 = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: `http://localhost:4000/articles/${data.id}`,
-            type: "DELETE",
-            data: data,
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token1) },
-            context: this,
-            success: function (result) {
-                console.log(result)
-            }
-        })
+        this.props.onDelete(index);
         this.getAllArticle();
     }
 
@@ -61,7 +55,8 @@ class All extends Component {
         window.location.href = "/";
     }
 
-    render() {
+    render() {  
+        
         return (
             <div className="container">
 
@@ -87,7 +82,7 @@ class All extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.contents.map((obj, index) => (
+                            {this.props.contents.arr ? this.props.contents.arr.map((obj, index) => (
                                 <tr key={index}>
                                     <td> {obj.id} </td>
                                     <td> {obj.title}</td>
@@ -97,7 +92,7 @@ class All extends Component {
                                     <td><NavLink to={"/articles/" + obj.id + "/edit"}> Edit </NavLink></td>
                                     <td> <Button outline color="danger" onClick={() => this.deleteHandler(obj.id)}>Delete</Button> </td>
                                 </tr>
-                            ))}
+                            )) : 'No Data'}  
                         </tbody>
                     </Table>
                 </div>
@@ -110,9 +105,18 @@ class All extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
+        contents: state.all
     }
 }
 
-export default connect(mapStateToProps)(All);
+function mapDispatchToProps(dispatch) {
+    return {
+        onDelete : (id) => dispatch (actionCreator.onDelete(id)),
+        onGetAllArticle : () => dispatch (actionCreator.onGetAllArticle())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(All);
 

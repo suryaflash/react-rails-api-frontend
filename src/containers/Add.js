@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './../App.css';
 import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { NavLink } from "react-router-dom";
-import $ from 'jquery';
 import { connect } from "react-redux";
+import * as actionCreator from '../actions/actions.js';
+
+var request = require('superagent');
+var JWT = require('superagent-jwt');
 
 class Add extends Component {
   constructor() {
@@ -21,28 +24,33 @@ class Add extends Component {
     if (localStorage.getItem('email') == null)
       window.location.href = "/";
 
+
     if (this.props.match.params.id !== undefined) {
       let data = { id: this.props.match.params.id }
-      let token = "Bearer " + localStorage.getItem("jwt")
-      $.ajax({
-        url: "http://localhost:4000/articles/find",
-        type: "POST",
-        data: data,
-        beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-        context: this,
-        success: function (result) {
-          console.log(result)
+      var jwt = JWT({
+        header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+        local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+      });
+
+      let t = this;
+
+      request
+        .post('http://localhost:4000/articles/find')
+        .field('data', data)
+        .use(jwt)
+        .end(function (err, res) {
+          console.log("hieee", res)
           let content_ex =
           {
-            title: result.title,
-            context: result.context
+            title: res.title,
+            context: res.context
           }
           console.log("conent_ex:", content_ex);
-          this.setState({ content: content_ex })
-        }
-      })
+          t.setState({ content: content_ex })
+        });
     }
   }
+
 
   handleChange = (e) => {
     let { content } = this.state;
@@ -58,15 +66,23 @@ class Add extends Component {
         title: this.state.content.title,
         context: this.state.content.context,
       }
-      this.props.dispatch({ type: 'update', payload: data })
+      this.props.onUpdate(data);
+      let content1 =
+      {
+        title: "",
+        context: ""
+      }
+      console.log("its here");
+      this.setState({content:content1})
     }
     else {
-      let data =
+      let dataa =
       {
         title: this.state.content.title,
         context: this.state.content.context,
+        jwt:localStorage.getItem('jwt')
       }
-      this.props.dispatch({ type: 'add', payload: data })
+      this.props.onAdd(dataa);
     }
   }
 
@@ -98,9 +114,7 @@ class Add extends Component {
             <Input name="context" id="exampleContext" value={this.state.content.context} onChange={this.handleChange} placeholder="enter context" />
 
           </FormGroup>
-
-
-
+          
           <Button color="success" onClick={this.addContent}>Submit Article</Button>
 
         </Form>
@@ -112,10 +126,17 @@ class Add extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('add', state);
+  console.log("after add reducer :",state.add.data)
   return {
     data: state.data
   }
 }
 
-export default connect(mapStateToProps)(Add);
+const mapDispachToProps = dispatch => {
+  return {
+    onUpdate: (data) => dispatch(actionCreator.onUpdate(data)),
+    onAdd: (dataa) => dispatch(actionCreator.onAdd(dataa))
+  };
+};
+
+export default connect(mapStateToProps,mapDispachToProps)(Add);

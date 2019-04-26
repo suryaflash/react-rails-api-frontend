@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import './../App.css';
 import { NavLink } from "react-router-dom";
 import { Button, Label, Input, Alert } from 'reactstrap';
-
 import { connect } from "react-redux";
 
-
-
 class Welcome extends Component {
-
-
     constructor(props) {
         super(props);
         this.state =
@@ -42,6 +37,7 @@ class Welcome extends Component {
 
 
     render() {
+        
         return (
             <div className="container">
                 <Alert color="info"> Sign In</Alert>
@@ -72,7 +68,6 @@ class Welcome extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('stp', state);
     return {
         //email : state.email
     }

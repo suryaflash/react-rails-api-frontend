@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './../App.css';
 import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { NavLink } from "react-router-dom";
-import $ from 'jquery';
+var request = require('superagent');
+var JWT = require('superagent-jwt');
 
 class Edit extends Component {
     constructor() {
@@ -29,49 +30,49 @@ class Edit extends Component {
             let data = {
                 id: this.props.match.params.id,
             }
+            var jwt = JWT({
+                header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+                local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+            });
 
-            let token = "Bearer " + localStorage.getItem("jwt")
-            $.ajax({
-                url: "http://localhost:4000/articles/findEdit",
-                type: "POST",
-                data: data,
-                beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-                context: this,
-                success: function (result) {
+            let t = this;
+
+            request
+                .post('http://localhost:4000/articles/findEdit')
+                .field('id', data.id)
+                .use(jwt)
+                .end(function (err, res) {
+                    console.log("hieee", res)
                     let content_ex =
                     {
-                        title: result.title,
-                        context: result.context
+                        title: res.body.title,
+                        context: res.body.context
                     }
                     console.log("recieved to put in edit:", content_ex);
-                    this.setState({ content: content_ex })
-                }
-            })
+                    t.setState({ content: content_ex })
+                });
         }
 
         let data = {
             id: this.props.match.params.id,
         }
 
+        let t = this;
 
-
-        let token = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: "http://localhost:4000/articles/latest",
-            type: "POST",
-            data: data,
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-            context: this,
-            success: function (result) {
+        request
+            .post('http://localhost:4000/articles/latest')
+            .field('id', data.id)
+            .use(jwt)
+            .end(function (err, res) {
+                console.log("hieee", res)
                 let latest1 =
                 {
-                    title: result.title,
-                    context: result.context
+                    title: res.body.title,
+                    context: res.body.context
                 }
                 console.log("recieved to put in latest:", latest1);
-                this.setState({ latest: latest1 })
-            }
-        })
+                t.setState({ latest: latest1 })
+            });
     }
 
     handleChange = (e) => {
@@ -89,18 +90,20 @@ class Edit extends Component {
             context: this.state.content.context,
         }
         console.log("data:", data);
+        var jwt = JWT({
+            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+        });
 
-        let token = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: "http://localhost:4000/articles/update",
-            type: "POST",
-            data: data,
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-            context: this,
-            success: function (result) {
-                console.log(result)
-            }
-        })
+        request
+            .post('http://localhost:4000/articles/update')
+            .field('id', data.id)
+            .field('title', data.title)
+            .field('context', data.context)
+            .use(jwt)
+            .end(function (err, res) {
+                console.log(res)
+            });
         window.location.href = "/articles/";
 
         let content1 =
@@ -119,17 +122,20 @@ class Edit extends Component {
             context: this.state.content.context,
         }
 
-        let token = "Bearer " + localStorage.getItem("jwt")
-        $.ajax({
-            url: "http://localhost:4000/articles/edit",
-            type: "POST",
-            data: data,
-            beforeSend: function (xhr) { xhr.setRequestHeader('Authorization', token) },
-            context: this,
-            success: function (result) {
-                console.log("after edit clicked:", result)
-            }
-        })
+        var jwt = JWT({
+            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
+            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+        });
+
+        request
+            .post('http://localhost:4000/articles/edit')
+            .field('id', data.id)
+            .field('title', data.title)
+            .field('context', data.context)
+            .use(jwt)
+            .end(function (err, res) {
+                console.log("after edit clicked:", res)
+            });
     }
 
     logout = () => {
