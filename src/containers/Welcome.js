@@ -12,19 +12,20 @@ class Welcome extends Component {
                 email: '',
                 password: ''
             }
+        this.handleChange = this.handleChange.bind(this);
+        this.onSignIn = this.onSignIn.bind(this);
     }
 
-    componentWillMount = () => {
-        console.log(localStorage.getItem('email'));
+    componentWillMount() {
         if (localStorage.getItem('email') !== null)
             window.location.href = "/articles/new";
     }
-    handleChange = (e) => {
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
 
-    onSignIn = (e) => {
+    onSignIn() {
         let userData =
         {
             "auth": {
@@ -32,19 +33,19 @@ class Welcome extends Component {
                 "password": this.state.password
             }
         }
-        this.props.dispatch({ type: 'signIn', payload: userData })
+        this.props.onSignIn(userData);
     }
 
 
     render() {
-        
+
         return (
             <div className="container">
                 <Alert color="info"> Sign In</Alert>
                 <div>
 
                     <Label >Email</Label>
-                    <Input value={this.state.email} id='email' name='email' onChange={this.handleChange} />
+                    <Input value={this.state.email} type='text' id='email' name='email' onChange={this.handleChange} />
 
                 </div>
 
@@ -67,10 +68,11 @@ class Welcome extends Component {
     }
 }
 
-function mapStateToProps(state) {
+const mapDispatchToProps = dispatch => {
     return {
-        //email : state.email
+        onSignIn: (data) => dispatch({ type: 'signIn', payload: data })
     }
 }
 
-export default connect(mapStateToProps)(Welcome);
+
+export default connect(null, mapDispatchToProps)(Welcome);

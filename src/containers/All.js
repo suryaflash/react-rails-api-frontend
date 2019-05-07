@@ -20,29 +20,26 @@ class All extends Component {
         }
     }
 
-
-    componentWillMount = (e) => {
+    UNSAFE_componentWillMount() {
+        this.getAllArticle();
         if (localStorage.getItem('email') == null)
             window.location.href = "/";
-        this.getAllArticle();
     }
 
     getAllArticle = () => {
-       this.props.onGetAllArticle();
         var t = this;
         var jwt = JWT({
-            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+            header: 'jwt',
+            local: 'jwt'
         });
 
         request
-            .get('http://localhost:4000/articles')
+            .get('/articles')
             .use(jwt)
-            .end(function (err, res) { 
+            .end(function (err, res) {
                 t.setState({ contents: res.body })
             });
     }
-
 
     deleteHandler = (index) => {
         this.props.onDelete(index);
@@ -55,8 +52,8 @@ class All extends Component {
         window.location.href = "/";
     }
 
-    render() {  
-        
+
+    render() {
         return (
             <div className="container">
 
@@ -72,7 +69,6 @@ class All extends Component {
                 </div>
                 <div className="container">
 
-
                     <Table borderless>
                         <thead>
                             <tr>
@@ -82,7 +78,7 @@ class All extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.contents.arr ? this.props.contents.arr.map((obj, index) => (
+                            {this.state.contents ? this.state.contents.map((obj, index) => (
                                 <tr key={index}>
                                     <td> {obj.id} </td>
                                     <td> {obj.title}</td>
@@ -92,11 +88,10 @@ class All extends Component {
                                     <td><NavLink to={"/articles/" + obj.id + "/edit"}> Edit </NavLink></td>
                                     <td> <Button outline color="danger" onClick={() => this.deleteHandler(obj.id)}>Delete</Button> </td>
                                 </tr>
-                            )) : 'No Data'}  
+                            )) : 'No Data'}
                         </tbody>
                     </Table>
                 </div>
-
                 <NavLink to="/articles/new"><Button color="primary" style={{ marginLeft: "500px", marginTop: "100px" }} > Add An Article </Button></NavLink>
 
             </div>
@@ -105,7 +100,6 @@ class All extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         contents: state.all
     }
@@ -113,10 +107,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onDelete : (id) => dispatch (actionCreator.onDelete(id)),
-        onGetAllArticle : () => dispatch (actionCreator.onGetAllArticle())
+        onDelete: (id) => dispatch(actionCreator.onDelete(id)),
+        onGetAllArticle: () => dispatch(actionCreator.onGetAllArticle())
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(All);
+export default connect(mapStateToProps, mapDispatchToProps)(All);
+
 

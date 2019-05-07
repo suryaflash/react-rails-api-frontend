@@ -71,8 +71,6 @@ class Signup extends Component {
 }
 function mapStateToProps(state) {
     return {
-        //email : state.email
-
     }
 }
 

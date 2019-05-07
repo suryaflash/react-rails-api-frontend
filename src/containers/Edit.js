@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import './../App.css';
 import { Button, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import * as actionCreator from '../actions/actions.js';
+
 var request = require('superagent');
 var JWT = require('superagent-jwt');
+
+var jwt = JWT({
+    header: 'jwt',
+    local: 'jwt'
+});
 
 class Edit extends Component {
     constructor() {
@@ -30,25 +38,19 @@ class Edit extends Component {
             let data = {
                 id: this.props.match.params.id,
             }
-            var jwt = JWT({
-                header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-                local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
-            });
-
+            this.props.onFindEdit(data);
             let t = this;
 
             request
-                .post('http://localhost:4000/articles/findEdit')
+                .post('/articles/findEdit')
                 .field('id', data.id)
                 .use(jwt)
                 .end(function (err, res) {
-                    console.log("hieee", res)
                     let content_ex =
                     {
                         title: res.body.title,
                         context: res.body.context
                     }
-                    console.log("recieved to put in edit:", content_ex);
                     t.setState({ content: content_ex })
                 });
         }
@@ -60,17 +62,15 @@ class Edit extends Component {
         let t = this;
 
         request
-            .post('http://localhost:4000/articles/latest')
+            .post('/articles/latest')
             .field('id', data.id)
             .use(jwt)
             .end(function (err, res) {
-                console.log("hieee", res)
                 let latest1 =
                 {
                     title: res.body.title,
                     context: res.body.context
                 }
-                console.log("recieved to put in latest:", latest1);
                 t.setState({ latest: latest1 })
             });
     }
@@ -89,20 +89,20 @@ class Edit extends Component {
             title: this.state.content.title,
             context: this.state.content.context,
         }
-        console.log("data:", data);
         var jwt = JWT({
-            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+            header: 'jwt',
+            local: 'jwt'
         });
 
         request
-            .post('http://localhost:4000/articles/update')
+            .post('/articles/update')
             .field('id', data.id)
             .field('title', data.title)
             .field('context', data.context)
             .use(jwt)
             .end(function (err, res) {
-                console.log(res)
+                if (err)
+                    console.log(err)
             });
         window.location.href = "/articles/";
 
@@ -123,18 +123,19 @@ class Edit extends Component {
         }
 
         var jwt = JWT({
-            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+            header: 'jwt',
+            local: 'jwt'
         });
 
         request
-            .post('http://localhost:4000/articles/edit')
+            .post('/articles/edit')
             .field('id', data.id)
             .field('title', data.title)
             .field('context', data.context)
             .use(jwt)
             .end(function (err, res) {
-                console.log("after edit clicked:", res)
+                if (err)
+                    console.log(err)
             });
     }
 
@@ -190,4 +191,17 @@ class Edit extends Component {
     }
 }
 
-export default Edit;
+function mapStateToProps(state) {
+    return {
+        title: state.title,
+        context: state.context
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onFindEdit: (data) => dispatch(actionCreator.onFindEdit(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);

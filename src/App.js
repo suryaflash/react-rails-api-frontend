@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import All from './containers/All';
 import Add from './containers/Add';
 import Welcome from './containers/Welcome';
@@ -10,6 +9,7 @@ import Histori from './containers/Histori';
 import { BrowserRouter, Route } from "react-router-dom"
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import './App.css';
 
 class App extends Component {
   render() {
