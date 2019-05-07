@@ -2,24 +2,28 @@ export default (state = {}, action) => {
     var request = require('superagent');
     var JWT = require('superagent-jwt');
     var jwt = JWT({
-        header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-        local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+        header: 'jwt',
+        local: 'jwt'
     });
     switch (action.type) {
         case 'Delete':
+            window.location.href = '/articles';
             return { data: "deleted" }
 
         case 'GetArticles':
             let array = []
             const obj = {}
             request
-                .get('http://localhost:4000/articles')
+                .get('/articles')
                 .use(jwt)
                 .end(function (err, res) {
                     array = res.body.slice();
                     obj.arr = [...array];
                 });
             return obj;
+
+        case 'error':
+            return { data: 'error occured' }
         default:
             return state;
     }

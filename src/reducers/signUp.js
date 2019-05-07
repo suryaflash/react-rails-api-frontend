@@ -1,16 +1,20 @@
-import axios from 'axios';
+var request = require('superagent');
+var JWT = require('superagent-jwt');
+var jwt = JWT({
+    header: 'jwt',
+    local: 'jwt'
+});
 export default (state = {}, action) => {
     switch (action.type) {
         case 'signUp':
-            axios.post('http://localhost:4000/user/sign_up', action.payload)
-                .then((response) => {
-                    console.log(response);
-                    window.location.href = "/";
-                })
-                .catch(function (error) {
-                    console.log(error)
-                })
-            break;
+            request
+                .post('/user/sign_up')
+                .use(jwt)
+                .field(action.payload)
+                .end(function (err, res) {
+                    window.location.href = "/"
+                });
+            return state;
 
         default:
             return state;

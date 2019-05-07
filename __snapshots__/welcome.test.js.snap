@@ -1,0 +1,1098 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test case for testing login login check with right data 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): ShallowWrapper {
+    Symbol(enzyme.__root__): [Circular],
+    Symbol(enzyme.__unrendered__): <Welcome />,
+    Symbol(enzyme.__renderer__): Object {
+      "batchedUpdates": [Function],
+      "checkPropTypes": [Function],
+      "getNode": [Function],
+      "render": [Function],
+      "simulateError": [Function],
+      "simulateEvent": [Function],
+      "unmount": [Function],
+    },
+    Symbol(enzyme.__node__): Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Alert
+            closeAriaLabel="Close"
+            color="info"
+            fade={true}
+            isOpen={true}
+            tag="div"
+            transition={
+              Object {
+                "appear": true,
+                "baseClass": "fade",
+                "baseClassActive": "show",
+                "enter": true,
+                "exit": true,
+                "in": true,
+                "mountOnEnter": false,
+                "onEnter": [Function],
+                "onEntered": [Function],
+                "onEntering": [Function],
+                "onExit": [Function],
+                "onExited": [Function],
+                "onExiting": [Function],
+                "tag": "div",
+                "timeout": 150,
+                "unmountOnExit": true,
+              }
+            }
+          >
+             Sign In
+          </Alert>,
+          <div>
+            <Label
+              tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              onChange={[Function]}
+              type="text"
+              value="surya"
+            />
+          </div>,
+          <div>
+            <Label
+              tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Password
+            </Label>
+            <Input
+              name="password"
+              onChange={[Function]}
+              type="password"
+              value="surya"
+            />
+          </div>,
+          <br />,
+          <Button
+            color="success"
+            onClick={[Function]}
+            tag="button"
+          >
+            SIGN IN
+          </Button>,
+          <br />,
+          <br />,
+          "Not a User?",
+          <NavLink
+            to="/Signup"
+          >
+             Create an Account
+          </NavLink>,
+          ">",
+        ],
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": " Sign In",
+            "closeAriaLabel": "Close",
+            "color": "info",
+            "fade": true,
+            "isOpen": true,
+            "tag": "div",
+            "transition": Object {
+              "appear": true,
+              "baseClass": "fade",
+              "baseClassActive": "show",
+              "enter": true,
+              "exit": true,
+              "in": true,
+              "mountOnEnter": false,
+              "onEnter": [Function],
+              "onEntered": [Function],
+              "onEntering": [Function],
+              "onExit": [Function],
+              "onExited": [Function],
+              "onExiting": [Function],
+              "tag": "div",
+              "timeout": 150,
+              "unmountOnExit": true,
+            },
+          },
+          "ref": null,
+          "rendered": " Sign In",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Email
+              </Label>,
+              <Input
+                id="email"
+                name="email"
+                onChange={[Function]}
+                type="text"
+                value="surya"
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Email",
+                "tag": "label",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Email",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "id": "email",
+                "name": "email",
+                "onChange": [Function],
+                "type": "text",
+                "value": "surya",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Password
+              </Label>,
+              <Input
+                name="password"
+                onChange={[Function]}
+                type="password"
+                value="surya"
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Password",
+                "tag": "label",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Password",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "password",
+                "onChange": [Function],
+                "type": "password",
+                "value": "surya",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "SIGN IN",
+            "color": "success",
+            "onClick": [Function],
+            "tag": "button",
+          },
+          "ref": null,
+          "rendered": "SIGN IN",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        "Not a User?",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": " Create an Account",
+            "to": "/Signup",
+          },
+          "ref": null,
+          "rendered": " Create an Account",
+          "type": [Function],
+        },
+        ">",
+      ],
+      "type": "div",
+    },
+    Symbol(enzyme.__nodes__): Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <Alert
+              closeAriaLabel="Close"
+              color="info"
+              fade={true}
+              isOpen={true}
+              tag="div"
+              transition={
+                Object {
+                  "appear": true,
+                  "baseClass": "fade",
+                  "baseClassActive": "show",
+                  "enter": true,
+                  "exit": true,
+                  "in": true,
+                  "mountOnEnter": false,
+                  "onEnter": [Function],
+                  "onEntered": [Function],
+                  "onEntering": [Function],
+                  "onExit": [Function],
+                  "onExited": [Function],
+                  "onExiting": [Function],
+                  "tag": "div",
+                  "timeout": 150,
+                  "unmountOnExit": true,
+                }
+              }
+            >
+               Sign In
+            </Alert>,
+            <div>
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Email
+              </Label>
+              <Input
+                id="email"
+                name="email"
+                onChange={[Function]}
+                type="text"
+                value="surya"
+              />
+            </div>,
+            <div>
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Password
+              </Label>
+              <Input
+                name="password"
+                onChange={[Function]}
+                type="password"
+                value="surya"
+              />
+            </div>,
+            <br />,
+            <Button
+              color="success"
+              onClick={[Function]}
+              tag="button"
+            >
+              SIGN IN
+            </Button>,
+            <br />,
+            <br />,
+            "Not a User?",
+            <NavLink
+              to="/Signup"
+            >
+               Create an Account
+            </NavLink>,
+            ">",
+          ],
+          "className": "container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": " Sign In",
+              "closeAriaLabel": "Close",
+              "color": "info",
+              "fade": true,
+              "isOpen": true,
+              "tag": "div",
+              "transition": Object {
+                "appear": true,
+                "baseClass": "fade",
+                "baseClassActive": "show",
+                "enter": true,
+                "exit": true,
+                "in": true,
+                "mountOnEnter": false,
+                "onEnter": [Function],
+                "onEntered": [Function],
+                "onEntering": [Function],
+                "onExit": [Function],
+                "onExited": [Function],
+                "onExiting": [Function],
+                "tag": "div",
+                "timeout": 150,
+                "unmountOnExit": true,
+              },
+            },
+            "ref": null,
+            "rendered": " Sign In",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Label
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Email
+                </Label>,
+                <Input
+                  id="email"
+                  name="email"
+                  onChange={[Function]}
+                  type="text"
+                  value="surya"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Email",
+                  "tag": "label",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": "Email",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "id": "email",
+                  "name": "email",
+                  "onChange": [Function],
+                  "type": "text",
+                  "value": "surya",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <Label
+                  tag="label"
+                  widths={
+                    Array [
+                      "xs",
+                      "sm",
+                      "md",
+                      "lg",
+                      "xl",
+                    ]
+                  }
+                >
+                  Password
+                </Label>,
+                <Input
+                  name="password"
+                  onChange={[Function]}
+                  type="password"
+                  value="surya"
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Password",
+                  "tag": "label",
+                  "widths": Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ],
+                },
+                "ref": null,
+                "rendered": "Password",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "name": "password",
+                  "onChange": [Function],
+                  "type": "password",
+                  "value": "surya",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "SIGN IN",
+              "color": "success",
+              "onClick": [Function],
+              "tag": "button",
+            },
+            "ref": null,
+            "rendered": "SIGN IN",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {},
+            "ref": null,
+            "rendered": null,
+            "type": "br",
+          },
+          "Not a User?",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": " Create an Account",
+              "to": "/Signup",
+            },
+            "ref": null,
+            "rendered": " Create an Account",
+            "type": [Function],
+          },
+          ">",
+        ],
+        "type": "div",
+      },
+    ],
+    Symbol(enzyme.__options__): Object {
+      "adapter": ReactSixteenAdapter {
+        "options": Object {
+          "enableComponentDidUpdateOnSetState": true,
+          "legacyContextMode": "parent",
+          "lifecycles": Object {
+            "componentDidUpdate": Object {
+              "onSetState": true,
+            },
+            "getChildContext": Object {
+              "calledByRenderer": false,
+            },
+            "getDerivedStateFromError": true,
+            "getDerivedStateFromProps": Object {
+              "hasShouldComponentUpdateBug": false,
+            },
+            "getSnapshotBeforeUpdate": true,
+            "setState": Object {
+              "skipsComponentDidUpdateOnNullish": true,
+            },
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__childContext__): null,
+  },
+  Symbol(enzyme.__unrendered__): null,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "id": "email",
+      "name": "email",
+      "onChange": [Function],
+      "type": "text",
+      "value": "",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "id": "email",
+        "name": "email",
+        "onChange": [Function],
+        "type": "text",
+        "value": "",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+  Symbol(enzyme.__rootNodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Alert
+            closeAriaLabel="Close"
+            color="info"
+            fade={true}
+            isOpen={true}
+            tag="div"
+            transition={
+              Object {
+                "appear": true,
+                "baseClass": "fade",
+                "baseClassActive": "show",
+                "enter": true,
+                "exit": true,
+                "in": true,
+                "mountOnEnter": false,
+                "onEnter": [Function],
+                "onEntered": [Function],
+                "onEntering": [Function],
+                "onExit": [Function],
+                "onExited": [Function],
+                "onExiting": [Function],
+                "tag": "div",
+                "timeout": 150,
+                "unmountOnExit": true,
+              }
+            }
+          >
+             Sign In
+          </Alert>,
+          <div>
+            <Label
+              tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Email
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </div>,
+          <div>
+            <Label
+              tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
+            >
+              Password
+            </Label>
+            <Input
+              name="password"
+              onChange={[Function]}
+              type="password"
+              value=""
+            />
+          </div>,
+          <br />,
+          <Button
+            color="success"
+            onClick={[Function]}
+            tag="button"
+          >
+            SIGN IN
+          </Button>,
+          <br />,
+          <br />,
+          "Not a User?",
+          <NavLink
+            to="/Signup"
+          >
+             Create an Account
+          </NavLink>,
+          ">",
+        ],
+        "className": "container",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": " Sign In",
+            "closeAriaLabel": "Close",
+            "color": "info",
+            "fade": true,
+            "isOpen": true,
+            "tag": "div",
+            "transition": Object {
+              "appear": true,
+              "baseClass": "fade",
+              "baseClassActive": "show",
+              "enter": true,
+              "exit": true,
+              "in": true,
+              "mountOnEnter": false,
+              "onEnter": [Function],
+              "onEntered": [Function],
+              "onEntering": [Function],
+              "onExit": [Function],
+              "onExited": [Function],
+              "onExiting": [Function],
+              "tag": "div",
+              "timeout": 150,
+              "unmountOnExit": true,
+            },
+          },
+          "ref": null,
+          "rendered": " Sign In",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Email
+              </Label>,
+              <Input
+                id="email"
+                name="email"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Email",
+                "tag": "label",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Email",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "id": "email",
+                "name": "email",
+                "onChange": [Function],
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <Label
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Password
+              </Label>,
+              <Input
+                name="password"
+                onChange={[Function]}
+                type="password"
+                value=""
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Password",
+                "tag": "label",
+                "widths": Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ],
+              },
+              "ref": null,
+              "rendered": "Password",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "name": "password",
+                "onChange": [Function],
+                "type": "password",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "SIGN IN",
+            "color": "success",
+            "onClick": [Function],
+            "tag": "button",
+          },
+          "ref": null,
+          "rendered": "SIGN IN",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": "br",
+        },
+        "Not a User?",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": " Create an Account",
+            "to": "/Signup",
+          },
+          "ref": null,
+          "rendered": " Create an Account",
+          "type": [Function],
+        },
+        ">",
+      ],
+      "type": "div",
+    },
+  ],
+}
+`;

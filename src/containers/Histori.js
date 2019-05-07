@@ -20,8 +20,6 @@ class Histori extends Component {
     componentWillMount = (e) => {
         if (localStorage.getItem('email') == null)
             window.location.href = "/";
-
-        console.log(this.props.match.params.id);
         this.getHistory();
     }
 
@@ -31,17 +29,15 @@ class Histori extends Component {
         let data = { id: this.props.match.params.id }
         var t = this;
         var jwt = JWT({
-            header: 'jwt', // header name to try reading JWT from responses, default to 'jwt'
-            local: 'jwt'   // key to store the JWT in localStorage, also default to 'jwt'
+            header: 'jwt',
+            local: 'jwt'
         });
 
         request
-            .post('http://localhost:4000/articles/history')
+            .post('/articles/history')
             .field('id', data.id)
             .use(jwt)
             .end(function (err, result) {
-                console.log(result)
-                console.log("history_array:", result.body);
                 t.setState({ history: result.body })
             });
     }
